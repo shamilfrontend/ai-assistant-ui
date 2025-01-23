@@ -148,33 +148,6 @@
         </div>
       </div>
     </div>
-
-    <aside class="app-sidebar">
-      <div class="app-list">
-        <ul class="app-list-ul">
-          <li>
-            <nuxt-link
-              to="/chat"
-              class="icon-btn btn-outline-success btn-sm button-effect"
-            >
-              <i class="fa fa-comments"/>
-            </nuxt-link>
-            <h5>Chat</h5>
-          </li>
-
-          <li class="">
-            <button
-              type="button"
-              class="icon-btn btn-danger"
-              href="#"
-            >
-              <i class="fa fa-sign-out"/>
-            </button>
-            <h5>close</h5>
-          </li>
-        </ul>
-      </div>
-    </aside>
   </div>
 </template>
 
@@ -184,17 +157,13 @@
 
 <style lang="scss" scoped>
 .chat-page {
-  display: grid;
-  grid-template-columns: 1fr 90px;
-
-  .msg-setting-main {
-    border-radius: 0 30px 30px 30px;
-    padding: 12px;
-    background-color: #1c9dea;
-    color: #fff;
-
-    p {
-      color: #fff;
+  .chitchat-main {
+    .messages {
+      @media (max-width: 600px) {
+        height: calc(100vh - 80px);
+        min-height: calc(100vh - 80px);
+        padding: 15px;
+      }
     }
   }
 
@@ -217,6 +186,10 @@
     display: grid;
     grid-template-columns: 1fr auto;
     grid-column-gap: 24px;
+
+    @media (max-width: 600px) {
+      grid-column-gap: 12px;
+    }
   }
 
   input {
@@ -231,6 +204,17 @@
       box-shadow: none;
       outline-color: transparent !important;
     }
+  }
+
+  button.btn {
+    @media (max-width: 600px) {
+      padding: 15px 25px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    height: 75px;
+    padding: 12px;
   }
 }
 
@@ -248,21 +232,31 @@
     display: inline-block;
     border-radius: 20px;
     position: relative;
-    margin-right: 24px;
+
+    @media (max-width: 600px) {
+      min-width: 40px;
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__avatar {
     display: block;
+    border-radius: 50%;
   }
 
   &__content {
     text-align: left;
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 18px;
+    margin-right: 18px;
   }
 
   &__name {
     font-size: 18px;
+
+    @media (max-width: 600px) {
+      font-size: 16px;
+    }
   }
 
   &__list {
@@ -308,6 +302,10 @@
 
   & + li {
     margin-top: 24px;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
   }
 }
 </style>
